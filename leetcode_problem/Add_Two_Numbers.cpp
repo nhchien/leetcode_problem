@@ -1,20 +1,82 @@
-// leetcode_problem.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include <iostream>
+#include <vector>
+#include <algorithm>
+//You are given two non - empty linked lists representing two non - negative integers.
+//The digits are stored in reverse order, and each of their nodes contains a single digit.
+//Add the two numbers and return the sum as a linked list.
+//
+//You may assume the two numbers do not contain any leading zero, except the number 0 itself.
+//
+//Input: l1 = [2, 4, 3], l2 = [5, 6, 4]
+//Output : [7, 0, 8] 
+//Explanation : 342 + 465 = 807.
+using namespace std;
+//Definition for singly-linked list.
+struct ListNode {
+      int val;
+      ListNode *next;
+      ListNode() : val(0), next(nullptr) {}
+      ListNode(int x) : val(x), next(nullptr) {}
+      ListNode(int x, ListNode *next) : val(x), next(next) {}
+  };
+ 
+class Solution {
+public:
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+        ListNode rs;
+        long n1 = 0;
+        while (l1)
+        {
+            n1 = n1 * 10 + l1->val; 
+            l1 = l1->next;
+        }
+        long n2 = 0;
+        while (l2)
+        {
+            n2 = n2 * 10 + l2->val;
+            l2 = l2->next;
+        }
+
+        long n = n1 + n2;
+        vector<int> arr;
+        int tmp;
+        while (n > 0)
+        {
+            tmp = n % 10;
+            arr.push_back(tmp);
+            n /= 10;
+        }
+        reverse(arr.begin(), arr.end());
+
+        for (int i = 0; i < arr.size(); i++)
+        {
+
+        }
+
+        return &rs;
+    }
+};
 
 int main()
 {
-    std::cout << "Hello World! First lesson\n";
+    ListNode lpool[10];
+    int lCnt = 0;
+    ListNode n2 = ListNode(3);
+    ListNode n1 = ListNode(4, &n2);
+    ListNode l1 = ListNode(2, &n1);
+
+    ListNode n4 = ListNode(5);
+    ListNode n3 = ListNode(6, &n4);
+    ListNode l2 = ListNode(4, &n3);
+
+    Solution sl;
+    ListNode* rs = sl.addTwoNumbers(&l1, &l2);
+
+    while (rs)
+    {
+        cout << rs->val << " ";
+        rs = rs->next;
+    }
+
+    return 0;
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file

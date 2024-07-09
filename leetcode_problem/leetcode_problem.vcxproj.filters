@@ -18,5 +18,8 @@
     <ClCompile Include="Add_Two_Numbers.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="convert_binary_number_in_linklisted_to_interger.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
