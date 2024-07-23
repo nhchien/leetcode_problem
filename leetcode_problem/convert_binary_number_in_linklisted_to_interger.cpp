@@ -1,33 +1,12 @@
-#include <iostream>
+#include "Header.h"
+#include "Function.h"
 
-using namespace std;
-
-struct ListNode {
-    int val;
-    ListNode* next;
-    ListNode() : val(0), next(nullptr) {}
-    ListNode(int x) : val(x), next(nullptr) {}
-    ListNode(int x, ListNode* next) : val(x), next(next) {}
+int getDecimalValue(Singly* head) {
+	int res = 0;
+	while (head != nullptr) {
+		res <<= 1;
+		res |= head->val;
+		head = head->next;
+	}
+	return res;
 };
-
-class Solution {
-public:
-    int getDecimalValue(ListNode* head) {
-        int res = 0;
-        while (head != nullptr) {
-            res <<= 1;
-            res |= head->val;
-            head = head->next;
-        }
-        return res;
-    }
-};
-
-int main() {
-    Solution s = Solution();
-    ListNode* n = new ListNode(1);
-    n->next = new ListNode(0);
-    n->next->next = new ListNode(1);
-
-    int a = s.getDecimalValue(n);
-}
