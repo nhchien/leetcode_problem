@@ -1,3 +1,7 @@
+#include <iostream>
+
+using namespace std;
+
 struct ListNode {
     int val;
     ListNode* next;
@@ -10,7 +14,7 @@ class Solution {
 public:
     int getDecimalValue(ListNode* head) {
         int res = 0;
-        while (!head) {
+        while (head != nullptr) {
             res <<= 1;
             res |= head->val;
             head = head->next;
@@ -22,10 +26,8 @@ public:
 int main() {
     Solution s = Solution();
     ListNode* n = new ListNode(1);
-    n = n->next;
-    n = new ListNode(0);
-    n = n->next;
-    n = new ListNode(1);
+    n->next = new ListNode(0);
+    n->next->next = new ListNode(1);
 
     int a = s.getDecimalValue(n);
 }
